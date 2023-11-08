@@ -1,0 +1,44 @@
+<%- include('particles/header.ejs') %>
+
+  <%- include('particles/navigation.ejs') %>
+
+    <div class="header-h1 header-h1-dark">
+      <center><h1>Войти в аккаунт</h1></center>
+    </div>
+    <form action="/login" method="post" class="item-block" style="border: 3px solid rgb(70, 80, 70);">
+      <div class="card-image">
+        <h2 class="card-heading">
+          Начнем!
+          <br><small style="
+          display: block;
+          font-size: 20px;
+          font-weight: 400;
+          margin-top: 5px;">Войдите, пожалуйста, в свой аккаунт.</small>
+        </h2>
+      </div>
+      <div class="form-group">
+        <label for="username" class="form-group__label">Имя пользователя</label>
+        <% if(loyalPass==true) { %>
+          <input type="text" class="form-group__input" name="username">
+          <% }else{ %>
+            <input type="text" class="err__form-group__input" name="username">
+            <% } %>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-group__label">Пароль</label>
+        <% if(loyalPass==true) { %>
+          <input type="password" class="form-group__input" name="password" >
+          <% }else{ %>
+            <input type="password" class="err__form-group__input" name="password">
+            <% } %>
+      </div>
+      <% if(loyalPass !=true) { %>
+        <p style="color: red;">
+          <%= loyalPass%>
+        </p>
+        <% } %>
+          <input type="submit" value="Войти" class="login_form-button">
+    </form>
+    <p class="login__link">Еще не зарегистрированы? <a href="/register">Зарегистрироваться</a></p>
+
+    <%- include('particles/footer.ejs') %>

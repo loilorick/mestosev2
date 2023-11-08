@@ -1,0 +1,37 @@
+<div class="navigation" id="header">
+
+  <h1 class="name" style="cursor: pointer;"><a href="#"
+      style="text-decoration: none; color: rgb(58, 56, 56);">MESTOSEV</a></h1>
+
+  <form action="/logout" method="post">
+    <% if(auth) { %>
+      <a href="/profile">
+        <div class="navigation__user">
+          <img src="/img/img_avatar.png" alt="Person" width="96" height="96">
+          <%= username %>
+        </div>
+      </a>
+      <% } %>
+
+        <a href="/" class="navigation__item">Главная</a>
+
+
+        <% if(auth) { %>
+          <a href="/add" class="navigation__item">Добавить</a>
+          <input class="navigation__exit" type="submit" value="Выйти">
+          <% } else {%>
+            <a href="/login" class="navigation__item">Авторизоваться</a>
+            <% } %>
+
+              <div class="dropdown">
+                <button class="dropbtn">Категории</button>
+                <div class="dropdown-content">
+                  <% for(let i = 0; i< categories.length; i ++){ %>
+                    <a href="/categories/<%= categories[i].id %>"><%= categories[i].title %></a>
+                  <% } %>
+                </div>
+              </div>
+  </form>
+
+
+</div>

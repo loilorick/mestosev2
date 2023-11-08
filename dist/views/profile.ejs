@@ -1,0 +1,38 @@
+<%- include('particles/header.ejs') %>
+
+    <%- include('particles/navigation.ejs') %>
+        <div class="item__profile" style="display: inline;">
+            <div class="profile">
+                <img src="./img/img_avatar.png" alt="Avatar"
+                    style="width:250px; margin-top: 25px; border-radius: 10px;">
+                <div class="profile__user">
+                    <p style="font-size: 25px;">Ваше имя:<br><b>
+                            <%= username %>
+                        </b></p>
+                    <p>Ваш статус: <span style="font-weight: 800;"><%= type %></span></p>
+                </div>
+            </div>
+            <div class="bascket__profile">
+                <div class="profile__best">
+                    <h2>Избранное</h2>
+                </div>
+                <div class="item__basket">
+                    <% for (let i=0; i < basket.length; i++) { %>
+                        <div class="basket__name">
+                           Название: <%= basket[i].title %>
+                        </div>
+                        <div class="basket__image">
+                            <img src="./img/<%= basket[i].image %>" class="img__basket">
+                        </div>
+                        <div class="basket__price">
+                            <%= basket[i].price %>₽
+                        </div>
+                        <div class="basket__author">
+                            Автор: <%= basket[i].author %>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+
+        <%- include('particles/footer.ejs') %>

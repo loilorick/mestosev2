@@ -1,0 +1,86 @@
+<%- include('particles/header.ejs') %>
+
+  <%- include('particles/navigation.ejs') %>
+
+
+    <div class="item__change">
+
+      <% if(item.author==username || admin ) { %>
+        <a href="/changeItem/<%= item.id %>" class="form-button" style="margin: 20px;">Изменить</a>
+        <a href="/delete/<%= item.id %>" class="form-button" style="margin: 20px;">Удалить</a>
+        <% } %>
+
+          <form action="/basket/<%=item.id%>" method="post">
+            <input name="title" type="hidden" value="<%=item.title%>">
+            <input name="image" type="hidden" value="<%=item.image%>">
+            <input name="price" type="hidden" value="<%=item.price%>">
+            <input name="author" type="hidden" value="<%=item.author%>">
+            <input type="submit" class="basket" value="Добавить в Избранное">
+
+            <div class="section__item" style="height: fit-content;">
+              <div>
+                
+                <div class="title__item">
+                  <h1>
+                    <%= item.title %>
+                  </h1>
+                </div>
+
+                <img class="image__item" src="/img/<%= item.image %>" style="float: left;">
+              </div>
+              <div>
+                <p class="item__description">
+                  <%= item.description %>
+                </p>
+                <hr class="hr__item">
+                <div style="width: auto; padding: 0%; font-size: smaller;">
+                  <p
+                    style="width: max-content; color: blue; font-weight: bold; display: inline; margin-right: 10px; font-size: 23px;">
+                    Автор - <%= item.author %>
+                  </p>
+                  <p class="item__price"
+                    style="color: orange; font-weight: bold; display: inline; margin-right: 10px; font-size: 23px; ">
+                    Цена: <%= item.price %>₽
+                  </p>
+                  <p style="color: gray; display: block;">
+                    Категория - <%= item.categories%>
+                  </p>
+                </div>
+              </div>
+            </div>
+    </div>
+
+    </form>
+
+    <% if(auth) { %>
+      <form action="/create/comment/<%= item.id %>" method="post">
+        <textarea name="text" type="text">Напишите что-нибудь...</textarea>
+        <input type="submit" value="post" class="comments__button">
+      </form>
+      <% } %>
+
+        <% for (let i=0; i < comments.length; i++) { %>
+
+          <div class="comment__block">
+            <div style=" padding: 0%;">
+              <p style="width: max-content; color: orange; font-weight: bold; display: inline; margin-right: 10px;">
+                <%=comments[i].name %>
+              </p>
+
+            </div>
+
+            <p class="comment__description">
+              <%=comments[i].text%>
+            </p>
+
+            <% if(comments[i].name==username){ %>
+              <form action="/deleteCommentary/<%=comments[i].id%>" method="post">
+                <input type="submit" class="form-button" value="Удалить">
+              </form>
+              <% } %>
+          </div>
+          <% } %>
+
+
+
+            <%- include('particles/footer.ejs') %>

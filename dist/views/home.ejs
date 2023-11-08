@@ -1,0 +1,106 @@
+<%- include('particles/header.ejs') %>
+
+  <%- include('particles/navigation.ejs') %>
+
+    <%- include('particles/sorting.ejs') %>
+
+      <!-- Введение -->
+
+      <p class="home__text">
+        <span style="font-weight: 900;">Севастополь</span> — город уникальный, несмотря на относительно молодой возраст,
+        он известен не только в России, но и
+        во всем мире. Севастополь всегда привлекал любителей путешествий, но не всегда был доступен для обычных
+        туристов. Город расположен на юго-западе Крымского полуострова, побережье в районе Севастополя уникально для
+        Крыма: это десятки незамерзающих хорошо защищенных бухт, а скалистые мысы их берегов являются естественными
+        цитаделями. Севастопольская бухта считается одной из самых удобных бухт в мире.
+      </p>
+
+      <!-- Декор карта -->
+
+      <!-- <div class="decor__map">
+        <img class="decor__img" src="./img/mapsev.jpg">
+        <p class="decor__text">
+          Севастополь называют <span style="font-weight: 900;">городом-музеем</span> под открытым небом. Здесь находятся
+          сотни памятников и исторических
+          достопримечательностей, большинство из них связаны с событиями двух легендарных войн — осадой города во время
+          Крымской войны 1853—1856 гг. и битвой за Севастополь в Великую Отечественную войну 1941—1945 гг.
+        </p>
+        <p class="decor__text1">
+          Севастополь молод, отсчет своих лет он ведет от 1783 года, но на его территории находится <span
+            style="font-weight: 900;">Херсонес</span> — город,
+            которому несколько тысячелетий, внесенный в список Всемирного наследия ЮНЕСКО.
+        </p>
+      </div> -->
+
+      <div class="header-h1 header-h1-dark">
+        <h1>ПОПУЛЯРНЫЕ МЕСТА</h1>
+      </div>
+
+      <!-- Слайдер -->
+
+      <div class="slideshow-container">
+
+        <div class="mySlides fade" style="border-radius: 10px;">
+          <img class="slider__image" src="./img/1.jpg" style="width:100%; border-radius: 10px; margin-top: 20px;">
+          <div class="text" style="font-size: 25px; font-weight: 700;">Театр имени Луначарского</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="./img/4.jpg" style="width:100%; border-radius: 10px; margin-top: 20px;">
+          <div class="text" style="color: black; font-size: 25px; font-weight: 700;">Диорама</div>
+        </div>
+
+        <div class="mySlides fade">
+          <img src="./img/3.jpeg" style="width:100%; border-radius: 10px; margin-top: 20px;">
+          <div class="text" style="color: black; font-size: 25px; font-weight: 700;">Панормама</div>
+        </div>
+
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+
+
+      <div class="header-h1 header-h1-dark">
+        <h1>НАШИ ПРЕДЛОЖЕНИЯ</h1>
+      </div>
+      <div
+        style="display: block; margin-left:auto; margin-right:auto; margin-bottom: auto; width: fit-content; height: min-content; background-color: white; border-radius: 10px;">
+        <% for (let i=0; i < items.length; i++) { %>
+          <a href="/items/<%= items[i].id %>" class="section">
+            <div style="position: relative; bottom: -82% ;  ">
+              <p class="section__price">Цена: <%= items[i].price %>₽</p>
+              <div style="width: auto; padding: 0%; font-size: smaller;">
+                <p style="width: fit-content; color: orange; font-weight: bold; display: inline; margin-right: 10px;"
+                  href="/users/<%= items[i].author %>">
+                  Автор - <%= items[i].author %>
+                </p>
+                <p style="color: gray; display: block;">
+                  Категория - <%= items[i].categories %>
+                </p>
+              </div>
+            </div>
+            <div style="position: relative; bottom: 18% ; ">
+              <h2 class="section__title">
+                <%= items[i].title %>
+              </h2>
+              <img class="section__image" src="img/<%= items[i].image %>">
+            </div>
+          </a>
+          <% } %>
+
+      </div>
+
+
+
+
+
+      <%- include('particles/footer.ejs') %>
