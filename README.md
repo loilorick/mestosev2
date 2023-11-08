@@ -3,6 +3,12 @@
 Установка зависимостей
 
     npm install
+    npm i
+    npm install prisma --save-dev
+    npx prisma migrate dev
+    npm install -g typescript
+    npm init
+    npm install express
 
 Создать файл .env в корневом каталоге и добавить конфигурацию БД
 
